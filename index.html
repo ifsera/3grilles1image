@@ -369,8 +369,9 @@
 				style="text-decoration: none;background-color: #111;">
 				<img src="img/3G1I.png" width="100%" />
 			</a>
-			<a href="#divAbout" style="text-decoration: none;" id="about">About</a>
-			<a href="#divPolicy" id="policy" style="text-decoration: none;">Privacy policy</a>
+			<a href="#about" style="text-decoration: none;" id="about">About</a>
+			<a href="#solution" style="text-decoration: none;" id="solution">Solution</a>
+			<a href="#policy" id="policy" style="text-decoration: none;">Privacy policy</a>
 			<a href="mailto:akir.sofiane+awal@gmail.com?subject=Awal contact" style="text-decoration: none;"
 				id="contact">Contact</a>
 		</div>
@@ -423,6 +424,31 @@
 
 				<br />
 			</div>
+
+			<div id="divSolution">
+				<div class="row">
+					<div style="text-align:center;">
+						<label for="levelLbl">Level:</label>
+						<input type="number" name="level" style="width: 4.35em" id="level" />
+						<select id="selectidhere" class="selectpicker" data-width="fit">
+							<option value='en' data-name='en'
+								data-content='<span class="flag-icon flag-icon-gb"></span>'></option>
+							<option value='fr' data-name='fr'
+								data-content='<span class="flag-icon flag-icon-fr"></span>'></option>
+							<option value='es' data-name='es'
+								data-content='<span class="flag-icon flag-icon-es"></span>'></option>
+							<option value='de' data-name='de'
+								data-content='<span class="flag-icon flag-icon-de"></span>'></option>
+							<option value='zz' data-name='zz'
+								data-content='<span class="flag-icon flag-icon-zz"></span>'></option>
+						</select>
+						<input id="back" value=">>" type="submit" />
+					</div>
+					<table id="table"></table>
+				</div>
+			</div>
+			<br /><br />
+
 			<div id="divAbout" name="divAbout">
 				<div class="row" style="text-align:center;">
 					<p style="text-align:justify;	width: 60%;margin-left: 360px;">
@@ -479,6 +505,7 @@
 				<img src="img/3G1B.png" width="100%" />
 			</a>
 			<a href="#about" style="text-decoration: none;" id="about">Um</a>
+			<a href="#solution" style="text-decoration: none;" id="solution">Lösung</a>
 			<a href="#policy" id="policy" style="text-decoration: none;">Regeln von
 				Privatsphäre</a>
 			<a href="mailto:akir.sofiane+awal@gmail.com?subject=Awal contact" style="text-decoration: none;"
@@ -535,7 +562,7 @@
 			<div id="divSolution">
 				<div class="row">
 					<div style="text-align:center;">
-						<label for="levelLbl">Niveau:</label>
+						<label for="levelLbl">Eben:</label>
 						<input type="number" name="level" style="width: 4.35em" id="level" />
 						<select id="selectidhere" class="selectpicker" data-width="fit">
 							<option value='en' data-name='en'
@@ -549,7 +576,7 @@
 							<option value='zz' data-name='zz'
 								data-content='<span class="flag-icon flag-icon-zz"></span>'></option>
 						</select>
-						<input id="back" value="search" type="submit" />
+						<input id="back" value=">>" type="submit" />
 					</div>
 					<table id="table"></table>
 				</div>
@@ -621,10 +648,11 @@ $('#selectidhere').on("changed.bs.select", function() {
 				<img src="img/3R1I.png" width="100%" />
 			</a>
 			<a href="#about" style="text-decoration: none;" id="about">A proposito</a>
+			<a href="#solution" style="text-decoration: none;" id="solution">Solución</a>
 			<a href="#policy" id="policy" style="text-decoration: none;">Reglas de
 				privacidad</a>
 			<a href="mailto:akir.sofiane+awal@gmail.com?subject=Awal contact" style="text-decoration: none;"
-				id="contact">Contact</a>
+				id="contact">Contactar</a>
 		</div>
 		<div class="main">
 			<div id="divPolicy">
@@ -673,6 +701,30 @@ $('#selectidhere').on("changed.bs.select", function() {
 
 				<br />
 			</div>
+
+			<div id="divSolution">
+				<div class="row">
+					<div style="text-align:center;">
+						<label for="levelLbl">Nivel:</label>
+						<input type="number" name="level" style="width: 4.35em" id="level" />
+						<select id="selectidhere" class="selectpicker" data-width="fit">
+							<option value='en' data-name='en'
+								data-content='<span class="flag-icon flag-icon-gb"></span>'></option>
+							<option value='fr' data-name='fr'
+								data-content='<span class="flag-icon flag-icon-fr"></span>'></option>
+							<option value='es' data-name='es'
+								data-content='<span class="flag-icon flag-icon-es"></span>'></option>
+							<option value='de' data-name='de'
+								data-content='<span class="flag-icon flag-icon-de"></span>'></option>
+							<option value='zz' data-name='zz'
+								data-content='<span class="flag-icon flag-icon-zz"></span>'></option>
+						</select>
+						<input id="back" value=">>" type="submit" />
+					</div>
+					<table id="table"></table>
+				</div>
+			</div>
+			<br /><br />
 			<div id="divAbout">
 				<div class="row" style="text-align:center;">
 					<p style="text-align:justify;	width: 60%;margin-left: 360px;">
@@ -723,7 +775,6 @@ $('#selectidhere').on("changed.bs.select", function() {
 		$("#selectidhere").on("change", function () {
 			var dataname = $("option[value=" + $(this).val() + "]", this).attr('data-name');
 			selectedCountry = dataname;
-			//	alert(dataname);
 		});
 
 
@@ -757,46 +808,61 @@ $('#selectidhere').on("changed.bs.select", function() {
 
 
 		$(document).ready(function () {
+			let isPass = false;
 
-
-			if (window.location.href.indexOf("policy") > -1) {
+			if (!isPass && window.location.href.indexOf("policy") > -1) {
 				$("#divPolicy").show();
 				$("#divAbout").hide();
 				$("#divSolution").hide();
 				$("#policy").css("background-color", "#FFFFFF");
 				$("#policy").css("color", "#111");
+				isPass = true;
+
+				$("#table tr").remove();
+
 			}
 
-			if (window.location.href.indexOf("about") > -1) {
+			if (!isPass && window.location.href.indexOf("about") > -1) {
 				$("#divAbout").show();
 				$("#divSolution").hide();
 				$("#divPolicy").hide();
 				$("#about").css("background-color", "#FFFFFF");
 				$("#about").css("color", "#111");
+				isPass = true;
+
+				$("#table tr").remove();
+
 			}
-			if (window.location.href.indexOf("contact") > -1) {
+			if (!isPass && window.location.href.indexOf("contact") > -1) {
 				$("#divAbout").show();
 				$("#divPolicy").hide();
 				$("#divSolution").hide();
 				$("#contact").css("background-color", "#FFFFFF");
 				$("#contact").css("color", "#111");
+				isPass = true;
+
+				$("#table tr").remove();
+
 			}
-			if (window.location.href.indexOf("solution") > -1) {
+			if (!isPass && window.location.href.indexOf("solution") > -1) {
 				$("#divAbout").hide();
 				$("#divPolicy").hide();
 				$("#divSolution").show();
 				$("#solution").css("background-color", "#FFFFFF");
 				$("#solution").css("color", "#111");
+				isPass = true;
 			}
-			if (window.location.href.indexOf("/#") <= -1) {
+			if (!isPass && window.location.href.indexOf("/#") <= -1) {
 				$("#divAbout").show();
 				$("#divPolicy").hide();
 				$("#divSolution").hide();
 				$("#about").css("background-color", "#FFFFFF");
 				$("#about").css("color", "#111");
+				isPass = true;
+
+				$("#table tr").remove();
+
 			}
-
-
 
 
 			$("#back").click(function () {
@@ -809,21 +875,31 @@ $('#selectidhere').on("changed.bs.select", function() {
 				$("#about").css("background-color", "#111");
 				$("#about").css("color", "#FFFFFF");
 				$("#solution").css("background-color", "#111");
+				$("#solution").css("color", "#FFFFFF");
 				$("#contact").css("background-color", "#111");
 				$("#contact").css("color", "#FFFFFF");
+
 				$("#divPolicy").show();
 				$("#divSolution").hide();
-				//	$("#divContact").hide();
 				$("#divAbout").hide();
+
+
+				$("#table tr").remove();
+
 			});
 			$("#solution").click(function () {
 				$("#policy").css("background-color", "#111");
+				$("#policy").css("color", "#FFFFFF");
 				$("#about").css("background-color", "#111");
-				//$("#contact").css("background-color", "#111");
+				$("#about").css("color", "#FFFFFF");
 				$("#solution").css("background-color", "#FFFFFF");
+				$("#solution").css("color", "#111");
+				$("#contact").css("background-color", "#111");
+				$("#contact").css("color", "#FFFFFF");
+
+
 				$("#divPolicy").hide();
 				$("#divSolution").show();
-				//$("#divContact").hide();
 				$("#divAbout").hide();
 			});
 			$("#contact").click(function () {
@@ -832,12 +908,9 @@ $('#selectidhere').on("changed.bs.select", function() {
 				$("#policy").css("background-color", "#111");
 				$("#policy").css("color", "#FFFFFF");
 				$("#solution").css("background-color", "#111");
+				$("#solution").css("color", "#FFFFFF");
 				$("#about").css("background-color", "#111");
 				$("#about").css("color", "#FFFFFF");
-				//	$("#divPolicy").hide();
-				//	$("#divSolution").hide();
-				//	$("#divContact").show();
-				//	$("#divAbout").hide();
 			});
 			$("#about").click(function () {
 				$("#policy").css("background-color", "#111");
@@ -848,10 +921,14 @@ $('#selectidhere').on("changed.bs.select", function() {
 				$("#contact").css("color", "#FFFFFF");
 				$("#about").css("background-color", "#FFFFFF");
 				$("#about").css("color", "#111");
+
 				$("#divPolicy").hide();
-				//$("#divSolution").hide();
-				//	$("#divContact").hide();
+				$("#divSolution").hide();
 				$("#divAbout").show();
+
+
+				$("#table tr").remove();
+
 			});
 		});
 
@@ -880,10 +957,11 @@ $('#selectidhere').on("changed.bs.select", function() {
 				$.getJSON(pathFileName,
 					function (data) {
 						var wordImg = '';
-
+						let found = false;
 						// ITERATING THROUGH OBJECTS
 						$.each(data, function (key, value) {
 							if (value.id == level) {
+								found = true;
 								wordImg += '<tr>';
 								wordImg += '<td><img src="' +
 									value.path + '" /></td>';
@@ -900,7 +978,12 @@ $('#selectidhere').on("changed.bs.select", function() {
 								wordImg += '</tr>';
 							}
 						});
-
+						if (!found) {
+							wordImg += '<tr>';
+							wordImg += '<td><img src="' +
+								'img/noResult.png' + '" /></td>';
+							wordImg += '</tr>';
+						}
 						//INSERTING ROWS INTO TABLE
 						$('#table').append(wordImg);
 						$("#table").insertBefore($("#footer"));
